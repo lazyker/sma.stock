@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       				http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+                    http://www.springframework.org/schema/context
+                    http://www.springframework.org/schema/context/spring-context-3.2.xsd
+                    http://www.springframework.org/schema/mvc
+                    http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
+
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<mvc:annotation-driven/>
+
+	<context:component-scan base-package="sma.stock" />
+	
+	<!-- INTERCEPTOR -->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <mvc:exclude-mapping path="/resources/**"/>
+            <mvc:exclude-mapping path="/error/**"/>
+            <bean class="sma.stock.common.interceptor.DefaultRequestInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+	
+	<!-- TILES -->
+    <bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+        <property name="order" value="1"/>
+        <property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"/>
+    </bean>
+
+    <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+        <property name="checkRefresh" value="true"/>
+        <property name="definitions">
+            <list>
+                <value>/WEB-INF/config/tiles/tilesConfig.xml</value>
+            </list>
+        </property>
+    </bean>
+    
+    <!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="order" value="2" />
+		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+	
+	<!-- JSON View -->
+    <bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView">
+        <property name="contentType" value="application/json; charset=UTF-8"/>
+    </bean>
+    
+    <bean id="requestUtil" class="sma.stock.common.utils.RequestUtil"/>
+	
+	<mvc:resources mapping="/assets/css/**" location="/assets/css/"/>
+    <mvc:resources mapping="/assets/js/**" location="/assets/js/"/>
+    <mvc:resources mapping="/assets/images/**" location="/assets/images/"/>
+	<mvc:resources mapping="/assets/less/**" location="/assets/less/"/>
+	
+</beans>
+

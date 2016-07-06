@@ -1,0 +1,24 @@
+@CHARSET "UTF-8";
+
+/** datepicker **/
+.ui-datepicker{ font-size: 14px; }
+.date-sunday .ui-state-default { color:#ec3636 !important; }
+.date-saturday .ui-state-default { color:#006fb8 !important; }
+/** End datepicker **/
+
+/** datatable **/
+table.dataTable.hover tbody tr:hover, table.dataTable.display tbody tr:hover {
+  background-color: #f6f6f6;
+  cursor: pointer;
+}
+ table.dataTable.hover tbody>tr.selected {
+  background-color: #b0bed9;
+}
+table.dataTable.hover tbody tr:hover.selected, table.dataTable.display tbody tr:hover.selected {
+  background-color: #b0bed9;
+}
+
+.pointer {
+	cursor: pointer;
+}
+/** End datatable **/

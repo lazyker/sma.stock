@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <comment>local</comment>
+    <entry key="env">local</entry>
+    <!-- development / operate -->
+    <entry key="jdbc.driver">org.mariadb.jdbc.Driver</entry>
+    <entry key="jdbc.url">jdbc:mariadb://61.97.131.25:3306/zeni_dev</entry>
+    <entry key="jdbc.user">root</entry>
+    <entry key="jdbc.pwd">wpsldpf2015</entry>
+
+    <!-- file -->
+    <entry key="local.file.upload.path">C:/upload/</entry>
+    <entry key="file.upload.path">home/upload</entry>
+</properties>
